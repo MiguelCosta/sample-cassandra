@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mpc.SampleCassandra.Application.Dto\Mpc.SampleCassandra.Application.Dto.csproj" />
+    <ProjectReference Include="..\Mpc.SampleCassandra.Domain.Core\Mpc.SampleCassandra.Domain.Core.csproj" />
+  </ItemGroup>
+
+</Project>
