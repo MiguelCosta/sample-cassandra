@@ -1,15 +1,33 @@
-﻿namespace Mpc.SampleCassandra.Data.Repository.Cassandra
+﻿namespace Mpc.SampleCassandra.Data.RepositoryCassandra
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
+    using Cassandra;
+    using Cassandra.Data.Linq;
     using Mpc.SampleCassandra.Domain.Core;
     using Mpc.SampleCassandra.Domain.Models;
 
     public class UserRepository : IUserRepository
     {
-        public UserModel Add(UserModel user)
+        private Table<UserModel> query;
+        private ISession session;
+
+        public UserRepository(ISession session)
         {
-            throw new System.NotImplementedException();
+            this.session = session;
+            this.query = new Table<UserModel>(session);
+        }
+
+        public async Task<UserModel> AddAsync(UserModel user)
+        {
+            var newUser = await this.query
+                .Insert(user)
+                .IfNotExists()
+                .ExecuteAsync()
+                .ConfigureAwait(false);
+
+            return user;
         }
 
         public void Delete(string username)
@@ -17,14 +35,24 @@
             throw new System.NotImplementedException();
         }
 
-        public Task<UserModel> FindAsync(string username)
+        public async Task<UserModel> FindAsync(string username)
         {
-            throw new System.NotImplementedException();
+            var user = await this.query
+                .Where(x => x.Username == username)
+                .FirstOrDefault()
+                .ExecuteAsync()
+                .ConfigureAwait(false);
+
+            return user;
         }
 
-        public Task<List<UserModel>> GetAllAsync()
+        public async Task<List<UserModel>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            var users = await this.query
+                .ExecuteAsync()
+                .ConfigureAwait(false);
+
+            return users.ToList();
         }
 
         public void Update(UserModel user)

@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mpc.SampleCassandra.Application.Services\Mpc.SampleCassandra.Application.Services.csproj" />
+    <ProjectReference Include="..\Mpc.SampleCassandra.Data.Repository.Cassandra\Mpc.SampleCassandra.Data.RepositoryCassandra.csproj" />
   </ItemGroup>
 
 </Project>

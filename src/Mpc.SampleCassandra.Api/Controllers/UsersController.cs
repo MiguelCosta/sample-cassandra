@@ -1,5 +1,6 @@
 ﻿namespace Mpc.SampleCassandra.Api.Controllers
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Mpc.SampleCassandra.Application.Dto;
@@ -16,13 +17,31 @@
             this.userService = userService;
         }
 
-        [HttpPost]
-        [Produces(typeof(UserDto))]
-        public async Task<IActionResult> PostAsync([FromBody]UserDto user)
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<User>), 200)]
+        public async Task<IActionResult> GetAsync()
         {
-            var newuser = await this.userService.CreateAsync(user);
+            var users = await this.userService.GetAllAsync().ConfigureAwait(false);
 
-            var location = $"{this.Request.PathBase}/{this.Request.Path}/{newuser.Username}";
+            return this.Ok(users);
+        }
+
+        [HttpGet("{username}")]
+        [ProducesResponseType(typeof(User), 200)]
+        public async Task<IActionResult> GetAsync(string username)
+        {
+            var user = await this.userService.FindAsync(username).ConfigureAwait(false);
+
+            return this.Ok(user);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(User), 201)]
+        public async Task<IActionResult> PostAsync([FromBody]User user)
+        {
+            var newuser = await this.userService.CreateAsync(user).ConfigureAwait(false);
+
+            var location = $"{this.Request.Host}{this.Request.Path}/{newuser.Username}";
 
             return this.Created(location, newuser);
         }

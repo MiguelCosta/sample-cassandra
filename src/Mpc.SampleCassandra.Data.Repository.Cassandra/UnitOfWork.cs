@@ -1,4 +1,4 @@
-﻿namespace Mpc.SampleCassandra.Data.Repository.Cassandra
+﻿namespace Mpc.SampleCassandra.Data.RepositoryCassandra
 {
     using System.Threading.Tasks;
     using Mpc.SampleCassandra.Domain.Core;
@@ -10,14 +10,9 @@
             this.Users = userRepository;
         }
 
-        public IUserRepository Users { get; };
+        public IUserRepository Users { get; }
 
         public Task CompleteAsync()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Dispose()
         {
             throw new System.NotImplementedException();
         }

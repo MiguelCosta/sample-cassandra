@@ -43,6 +43,9 @@
             {
                 c.SwaggerDoc("v1", new Info { Title = "Mpc Cassandra Sample", Version = "v1" });
             });
+
+            Application.Services.Bootstraper.Init(services, this.Configuration);
+            Data.RepositoryCassandra.Bootstraper.Init(services, this.Configuration);
         }
     }
 }

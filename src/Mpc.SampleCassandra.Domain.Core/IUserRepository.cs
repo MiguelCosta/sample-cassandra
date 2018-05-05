@@ -6,7 +6,7 @@
 
     public interface IUserRepository
     {
-        UserModel Add(UserModel user);
+        Task<UserModel> AddAsync(UserModel user);
 
         void Delete(string username);
 

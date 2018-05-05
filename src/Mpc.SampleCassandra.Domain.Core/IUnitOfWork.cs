@@ -3,7 +3,7 @@
     using System;
     using System.Threading.Tasks;
 
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         IUserRepository Users { get; }
 

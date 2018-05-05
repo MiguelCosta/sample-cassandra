@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mpc.SampleCassandra.Domain.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mpc.SampleCassandra.Domain.Models", "Mpc.SampleCassandra.Domain.Models\Mpc.SampleCassandra.Domain.Models.csproj", "{DD71CE94-3ECA-4265-A7F7-01C823AD045A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mpc.SampleCassandra.Data.Repository.Cassandra", "Mpc.SampleCassandra.Data.Repository.Cassandra\Mpc.SampleCassandra.Data.Repository.Cassandra.csproj", "{12FCB241-116E-447D-91DF-A4EC7F9DA1B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mpc.SampleCassandra.Data.RepositoryCassandra", "Mpc.SampleCassandra.Data.Repository.Cassandra\Mpc.SampleCassandra.Data.RepositoryCassandra.csproj", "{12FCB241-116E-447D-91DF-A4EC7F9DA1B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

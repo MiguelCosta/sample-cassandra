@@ -7,14 +7,16 @@
 
     public interface IUserService
     {
-        Task<UserDto> CreateAsync(UserDto user);
+        Task<User> CreateAsync(User user);
 
         Task DeleteAsync(string id);
 
-        Task<IEnumerable<UserDto>> GetAllAsync();
+        Task<User> FindAsync(string username);
 
-        Task UpdateAsync(UserDto user);
+        Task<IEnumerable<User>> GetAllAsync();
 
-        Task UpdateAsync(JsonPatchDocument<UserDto> user);
+        Task UpdateAsync(User user);
+
+        Task UpdateAsync(JsonPatchDocument<User> user);
     }
 }
